@@ -1,0 +1,76 @@
+name: Public artifact quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: climate-atlas-public-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Verify immutable publication package
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f site/.nojekyll
+          sha256sum -c SHA256SUMS.txt
+          jq -e '
+            .runtime_requires_credentials == false and
+            .runtime_requires_scientific_publishers == false and
+            (.research_commit | test("^[0-9a-f]{40}$")) and
+            (.development_commit | test("^[0-9a-f]{40}$")) and
+            .development_commit != "UNBOUND-LOCAL-BUILD"
+          ' PUBLICATION.json >/dev/null
+          jq -e '
+            .schema_version == "1.0.0" and (.files | length > 0) and
+            all(.files[]; (.path | startswith("/") | not) and (.path | contains("..") | not))
+          ' SITE-FILE-MANIFEST.json >/dev/null
+          find site -type f -printf '%P\n' | LC_ALL=C sort > /tmp/site-actual.txt
+          jq -r '.files[].path' SITE-FILE-MANIFEST.json | LC_ALL=C sort > /tmp/site-expected.txt
+          diff -u /tmp/site-expected.txt /tmp/site-actual.txt
+          jq -r '.files[] | "\(.sha256)  site/\(.path)"' SITE-FILE-MANIFEST.json | sha256sum -c -
+          test -z "$(find site -type l -print -quit)"
+          test -z "$(find site -type f \( -name '*.map' -o -name '*.pem' -o -name '*.key' -o -name '*.p12' -o -name '*.pfx' -o -name '*.ts' -o -name '*.tsx' -o -name '*.py' \) -print -quit)"
+          if grep -RInE \
+            --include='*.html' --include='*.js' --include='*.css' --include='*.json' \
+            --include='*.geojson' --include='*.md' --include='*.txt' \
+            'drive\.google\.com|/Research/releases/|/workspace/|sourceMappingURL=|BEGIN (RSA |EC |OPENSSH |)PRIVATE KEY|UNBOUND-LOCAL-BUILD' site; then
+            exit 1
+          fi
+          jq -e '.source_preservation.runtime_depends_on_external_source_sites == false' site/data/source-manifest.json >/dev/null
+          jq -e '[.datasets[] | select((.license.name // "") == "" or (.license.url // "") == "" or (.license.attribution // "") == "")] | length == 0' site/data/source-manifest.json >/dev/null
+          while IFS= read -r layer_file; do test -f "site/${layer_file#./}"; done < <(jq -r '.layers[].data_url' site/data/source-manifest.json)
+          while IFS=$'\t' read -r expected_hash expected_size relative; do
+            test -f "site/$relative"
+            test "$(stat -c %s "site/$relative")" = "$expected_size"
+            test "$(sha256sum "site/$relative" | cut -d' ' -f1)" = "$expected_hash"
+          done < <(jq -r '.artifacts[] | [.sha256, .size_bytes, .path] | @tsv' site/data/artifacts-public.json)
+      - name: Static-host smoke test
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory site >/tmp/public-site.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..20}; do
+            curl --fail --silent http://127.0.0.1:4173/ >/dev/null && break
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:4173/ >/dev/null
+          while IFS= read -r relative; do
+            curl --fail --silent --show-error "http://127.0.0.1:4173/$relative" >/dev/null
+          done < <(jq -r '.files[].path' SITE-FILE-MANIFEST.json)
+

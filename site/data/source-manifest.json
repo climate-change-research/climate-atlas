@@ -1,0 +1,840 @@
+{
+  "schema_version": "1.1.0",
+  "project_id": "WEB-GREENERY-001",
+  "title": "Website Stage 1 global greenery reference compilation",
+  "snapshot_as_of": "2026-08-22",
+  "retrieval_timezone": "UTC",
+  "reference_strategy": "Each layer uses a separately justified, fixed observation period verified on 2026-08-22. Periods, production maturity, and geographic completeness differ: the PACE/OCI GIBS layer is an explicitly provisional, spatially incomplete daily quick-look whose exact upstream collection mapping is unresolved, while annual and monthly layers use closed periods. The compilation is intentionally asynchronous and is not a live, perfectly synchronized, or uniformly complete image of Earth.",
+  "source_preservation": {
+    "snapshot_id": "global-greenery-stage1-2026-08-22-v1",
+    "publication_id": "climate-atlas-greenery-stage1-2026-08-24-v1",
+    "research_snapshot": "global-greenery-stage1-2026-08-22-v1",
+    "research_commit": "a364c940496bca278a6518a66e15f4c9bdd5ff77",
+    "browser_runtime_assets": "This public projection contains only the rights-cleared files required by the browser, with checksums and scientific metadata.",
+    "source_custody": "Complete source bytes, processing receipts, and recovery assets are preserved in private owner-controlled custody and are not required at runtime.",
+    "runtime_depends_on_external_source_sites": false,
+    "public_redistribution_status": "Only the allowlisted derived display package is authorized for this publication. Complete original source archives remain private where publisher terms or custody policy require it."
+  },
+  "allowed_scientific_statuses": [
+    "direct_observation",
+    "remote_sensing_classification",
+    "derived_indicator",
+    "scientific_proxy",
+    "project_reported_information",
+    "modelled_or_inferred_information"
+  ],
+  "datasets": [
+    {
+      "identifier": "MCD12Q1.061.A2024001",
+      "pipeline_source_ids": ["mcd12q1-061-2024", "mcd12q1-061-2024-gibs-layer-metadata", "mcd12q1-061-2024-cmr"],
+      "version": "6.1 / 2024 annual global tile set rendered by GIBS",
+      "title": "MODIS Terra+Aqua Land Cover Type Yearly L3 Global 500 m SIN Grid",
+      "publisher": "NASA LP DAAC",
+      "authoritative_url": "https://doi.org/10.5067/MODIS/MCD12Q1.061",
+      "observation_period": {
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "label": "Calendar year 2024"
+      },
+      "publication_or_release_date": "2022-08-05",
+      "asset_production_or_update_date": "2025-07-30",
+      "asset_production_or_update_date_basis": "UTC date of the maximum updated timestamp across the preserved 315-granule 2024 CMR inventory; this is a metadata update date, not the observation period.",
+      "geographic_coverage": "Global land, subject to source quality and unclassified pixels",
+      "spatial_resolution": "500 m sinusoidal-grid source classification; approximately 39 km display pixels in this prototype",
+      "scientific_status": "remote_sensing_classification",
+      "measurement_or_classification_method": "MCD12Q1 Collection 6.1 assigns annual land-cover classes from MODIS Terra and Aqua reflectance using supervised classification and post-processing; this website uses its IGBP classification as rendered by NASA GIBS.",
+      "license": {
+        "name": "NASA EOSDIS Data Use and Citation Guidance",
+        "url": "https://www.earthdata.nasa.gov/engage/open-data-services-software-policies/data-information-guidance",
+        "attribution": "NASA EOSDIS LP DAAC; Friedl and Sulla-Menashe, MCD12Q1 Version 6.1.",
+        "redistribution": "Openly shared without restriction under EOSDIS guidance; citation requested."
+      },
+      "update_schedule": "Annual; product latency is not fixed and the newest complete global tile set is verified at retrieval.",
+      "retrieval": {
+        "date": "2026-08-22",
+        "method": "NASA GIBS WMTS EPSG:3857 render tiles at zoom 2; the official GIBS layer-to-MCD12Q1 mapping and complete 315-granule 2024 CMR inventory, including the 30 July 2025 maximum metadata update timestamp, are checksummed in pipeline-run.json.",
+        "url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/1.0.0/WMTSCapabilities.xml",
+        "availability_status": "verified",
+        "http_status": 200
+      },
+      "checksums": [
+        "Per-tile, GIBS layer-metadata, and complete CMR-inventory SHA-256 values are preserved in pipeline-run.json and the source snapshot."
+      ],
+      "known_limitations": [
+        "Land-cover classes are classifications, not direct observations of ecological condition or naturalness.",
+        "Plantations may be classified as forest and managed grassland cannot be separated reliably from natural grassland in this layer.",
+        "NASA warns that the global training database was not updated through the full record; users should be cautious with Collection 6.1 land-cover classes for 2021 and later.",
+        "IGBP does not contain a distinct tundra class; the website therefore labels barren/sparse and polar cover without claiming a tundra map.",
+        "The website prototype is downsampled to about 39 km per pixel at the equator and must not be used for local decisions."
+      ],
+      "processing_steps": [
+        "Retrieve the sixteen fixed-date GIBS zoom-2 tiles.",
+        "Preserve the official GIBS layer-to-MCD12Q1 mapping and 315-granule 2024 CMR inventory.",
+        "Decode exact documented IGBP palette colours.",
+        "Separate selected terrestrial vegetation-type classes, cropland classes, and permanent wetlands into independent transparent images.",
+        "Apply an accessible display palette without changing class membership."
+      ],
+      "website_layers": [
+        "natural-types",
+        "agriculture",
+        "wetlands"
+      ],
+      "selection_rationale": "Selected because it is an authoritative, complete 2024 global land-cover classification with a stable DOI, explicit IGBP classes, and a public no-key render service; management and post-2021 training limitations remain explicit."
+    },
+    {
+      "identifier": "MOD13A3.061.A2026182",
+      "pipeline_source_ids": ["mod13a3-061-2026-07", "mod13a3-061-2026-07-gibs-layer-metadata", "mod13a3-061-2026-07-cmr"],
+      "version": "6.1 / July 2026 monthly composite",
+      "title": "MODIS Terra Vegetation Indices Monthly L3 Global 1 km",
+      "publisher": "NASA LP DAAC",
+      "authoritative_url": "https://doi.org/10.5067/MODIS/MOD13A3.061",
+      "observation_period": {
+        "start": "2026-07-01",
+        "end": "2026-07-31",
+        "label": "July 2026 monthly composite"
+      },
+      "publication_or_release_date": "2021-02-16",
+      "asset_production_or_update_date": "2026-08-17",
+      "asset_production_or_update_date_basis": "UTC date of the maximum updated timestamp across the preserved 294-granule July 2026 LPCLOUD CMR inventory. GIBS metadata maps MOD13A3 v061 to the legacy LPDAAC_ECS provider concept, so the short-name/version match supports product identity but this date is not proven to be the GIBS tile-render update.",
+      "geographic_coverage": "Global land where quality-screened MODIS retrievals are available",
+      "spatial_resolution": "1 km source product; approximately 39 km display pixels in this prototype",
+      "scientific_status": "derived_indicator",
+      "measurement_or_classification_method": "NDVI is calculated from red and near-infrared surface reflectance and composited monthly with quality controls.",
+      "display_value_mapping": {
+        "unit": "dimensionless NDVI",
+        "source_display_range": "Visible GIBS bins approximately 0.0001 to 1.0001; transparent source bins and no-data remain transparent",
+        "transformation": "Source palette order is remapped monotonically to viridis; bin membership is retained but the PNG is an ordinal display, not an analytical value grid.",
+        "numeric_tooltip_available": false,
+        "colormap_url": "https://gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_L3_NDVI.xml"
+      },
+      "license": {
+        "name": "NASA EOSDIS Data Use and Citation Guidance",
+        "url": "https://www.earthdata.nasa.gov/engage/open-data-services-software-policies/data-information-guidance",
+        "attribution": "NASA EOSDIS LP DAAC; Didan, MOD13A3 Version 6.1.",
+        "redistribution": "Openly shared without restriction under EOSDIS guidance; citation requested."
+      },
+      "update_schedule": "Monthly with processing latency; the latest complete month is verified at retrieval.",
+      "retrieval": {
+        "date": "2026-08-22",
+        "method": "NASA GIBS WMTS fixed-date render tiles; official GIBS metadata maps MOD13A3 v061 to legacy concept C1621177194-LPDAAC_ECS, while the complete 294-granule July 2026 inventory comes from the current same-short-name/version LPCLOUD concept C2327962326-LPCLOUD. Both responses and the 17 August 2026 maximum LPCLOUD metadata timestamp are preserved; the provider migration means that timestamp is contextual product metadata, not proven GIBS tile-render provenance.",
+        "url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/1.0.0/WMTSCapabilities.xml",
+        "availability_status": "verified",
+        "http_status": 200
+      },
+      "checksums": [
+        "Per-tile, colour-map, GIBS layer-metadata, and complete CMR-inventory SHA-256 values are preserved in pipeline-run.json and the source snapshot."
+      ],
+      "known_limitations": [
+        "NDVI measures a spectral contrast associated with photosynthetically active green vegetation; it is not biomass, carbon stock, species diversity, crop yield, permanence, or proof of ecosystem health.",
+        "Values respond to clouds, aerosols, snow, soil background, canopy saturation, viewing geometry, and compositing choices.",
+        "A single global month combines different seasons and should not be read as each region's annual maximum.",
+        "GIBS metadata still names the legacy LPDAAC_ECS v061 concept while the current CMR granules are under the LPCLOUD continuation. Product identity is matched by MOD13A3 short name and v061, but the LPCLOUD update timestamp is not established as the GIBS render-update time."
+      ],
+      "processing_steps": [
+        "Retrieve the fixed July 2026 NASA GIBS render.",
+        "Preserve the official GIBS mapping and complete 294-granule July 2026 CMR inventory.",
+        "Preserve transparent no-data pixels.",
+        "Remap the ordered GIBS palette to a perceptually ordered viridis display palette.",
+        "Do not interpolate or infer missing observations."
+      ],
+      "website_layers": [
+        "vegetation-density"
+      ],
+      "selection_rationale": "Chosen because July 2026 was the latest complete global monthly MODIS Terra composite independently visible in both GIBS and NASA CMR on the retrieval date."
+    },
+    {
+      "identifier": "GLWD.2.0.MAIN_CLASS",
+      "pipeline_source_ids": ["glwd-v2-0-combined-classes"],
+      "version": "2.0 combined classes / main-class raster",
+      "title": "Global Lakes and Wetlands Database v2.0",
+      "publisher": "HydroSHEDS and McGill University",
+      "authoritative_url": "https://doi.org/10.6084/m9.figshare.28519994",
+      "observation_period": {
+        "start": null,
+        "end": null,
+        "label": "Maximum/contemporary synthesis compiled from source inputs spanning approximately 1990–2020; approximate years only, not exact calendar bounds or a single observation period",
+        "precision": "approximate_year_range"
+      },
+      "publication_or_release_date": "2025-05-23",
+      "asset_production_or_update_date": "2025-05-23",
+      "geographic_coverage": "Global land from 56°S to 84°N; Antarctica and higher northern latitudes are outside the source raster",
+      "spatial_resolution": "15 arc-seconds (approximately 500 m) source grid; approximately 20 km sampled display pixels in this prototype",
+      "scientific_status": "modelled_or_inferred_information",
+      "measurement_or_classification_method": "GLWD v2 deterministically combines and harmonizes multiple lake, river, wetland and land-cover sources. This website groups selected values from its main-class raster, whose class is the largest-area wetland class present within each source cell rather than necessarily a majority of the cell.",
+      "license": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Lehner et al. (2025), Global Lakes and Wetlands Database v2.0; HydroSHEDS and McGill University.",
+        "redistribution": "CC BY 4.0 permits derived redistribution with attribution. The publisher additionally requests that the complete original-format dataset not be mirrored elsewhere without permission. The website includes only a small transformed display; the unchanged source archive is retained only in the private owner-controlled GitHub/Drive preservation set and is not authorized for public mirroring."
+      },
+      "update_schedule": "No fixed cadence; v2.0 is the verified release at retrieval.",
+      "retrieval": {
+        "date": "2026-08-22",
+        "method": "Downloaded the official Figshare combined-class raster archive, verified its published MD5, validated the source profile and transformed only selected wetland classes.",
+        "url": "https://ndownloader.figshare.com/files/54001814",
+        "availability_status": "verified",
+        "http_status": 200
+      },
+      "checksums": [
+        "upstream md5:aea80ff46211b349ffbaa871442fd0ed",
+        "archive sha256:5003d9e6603efd5b2e97ab91ef5e4a33c7ada544c73b7fe74d22a08847d88236",
+        "main-class GeoTIFF sha256:9a1fc396c56f1db2da1442470886a9738647c0a968286956b69d8ccf7d348075"
+      ],
+      "known_limitations": [
+        "GLWD is a deterministic multi-source synthesis, not a contemporaneous direct observation or a wetland-condition measure.",
+        "The main-class value means the largest-area wetland class among wetland classes present in a cell; the wetland may occupy much less than half of that cell.",
+        "Source dates vary across the 1990–2020 compilation window, and class accuracy and completeness vary by region and wetland type.",
+        "The approximately 20 km nearest-neighbour prototype display can omit small wetlands and alias boundaries; it must not be used to calculate area or make local decisions."
+      ],
+      "processing_steps": [
+        "Verify the publisher MD5 and exact source raster profile.",
+        "Select forested-wetland, peatland, non-forested inland-wetland and coastal-wetland main classes; exclude open-water, salt-pan, delta, mangrove and rice-paddy classes.",
+        "Warp categorical cells to a 2048-pixel global Web Mercator grid with nearest-neighbour sampling and no extrapolation.",
+        "Apply an accessible categorical palette and preserve out-of-coverage pixels as transparent."
+      ],
+      "website_layers": [
+        "wetland-context"
+      ],
+      "selection_rationale": "Selected to disclose broad wetland types missed by a single permanent-wetland land-cover class while keeping its heterogeneous dates, modelled/inferred status and non-area-preserving prototype transformation explicit."
+    },
+    {
+      "identifier": "GMW.4.1.12.2025",
+      "pipeline_source_ids": ["gmw-v4-1-12-2025"],
+      "version": "4.1.12 / 2025 annual epoch",
+      "title": "Global Mangrove Watch: Timeseries of Mangrove Extent",
+      "publisher": "Aberystwyth University, Wetlands International, solo Earth Observation, The Nature Conservancy, JAXA and partners",
+      "authoritative_url": "https://doi.org/10.5281/zenodo.21346457",
+      "observation_period": {
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "label": "2025 annual classification"
+      },
+      "publication_or_release_date": "2026-07-13",
+      "asset_production_or_update_date": "2026-07-13",
+      "geographic_coverage": "Global mangrove habitat domain; mapped extent between approximately 39 degrees south and 35 degrees north",
+      "spatial_resolution": "30 m source raster/vector classification; approximately 20 km display grid with minimum-pixel symbolization",
+      "scientific_status": "remote_sensing_classification",
+      "measurement_or_classification_method": "XGBoost and random-forest classifications of Landsat and Sentinel-2 imagery combined with JAXA L-band SAR, annual summaries, Bayesian updating, Markov-chain filtering, and visual quality assurance.",
+      "license": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "© Global Mangrove Watch; Bunting et al. (2026), Global Mangrove Watch v4.1.12.",
+        "redistribution": "Permitted with attribution under CC BY 4.0."
+      },
+      "update_schedule": "Expected to continue with additional annual epochs and revisions; no fixed release date.",
+      "retrieval": {
+        "date": "2026-08-22",
+        "method": "Downloaded the 2025 country-information GeoPackage from the open Zenodo record and verified the publisher-supplied MD5 before processing.",
+        "url": "https://zenodo.org/api/records/21346457/files/gmw_v4112_2025_mng_ext_cntry_info_vec.gpkg.gz/content",
+        "availability_status": "verified",
+        "http_status": 200
+      },
+      "checksums": [
+        "upstream md5:ad1dda154bd21ad14b3cdf6baf3143ed",
+        "Downloaded-file SHA-256 is preserved in pipeline-run.json."
+      ],
+      "known_limitations": [
+        "The reported global F1 score is an average and accuracy varies locally and through time.",
+        "Classification can omit or commission mangrove pixels; annual outputs include temporal filtering and are not a single-date photograph.",
+        "The prototype rasterizes and slightly dilates presence so narrow coastal mangroves remain visible; display footprint must not be interpreted as area."
+      ],
+      "processing_steps": [
+        "Verify the publisher MD5 of the compressed 2025 GeoPackage.",
+        "Stream 1,551,714 polygons in bounded chunks and reproject to Web Mercator.",
+        "Rasterize presence onto a 2048-pixel global Web Mercator grid.",
+        "Add a one-pixel visual halo; preserve the undilated core separately in the display colour."
+      ],
+      "website_layers": [
+        "mangroves"
+      ],
+      "selection_rationale": "Chosen as the newest authoritative global mangrove epoch available at audit, superseding the older 2000 GIBS layer and 2020 GMW v3 baseline."
+    },
+    {
+      "identifier": "OBIS.872b3454-7114-4ca9-914b-99b2518f86ee",
+      "pipeline_source_ids": ["obis-seagrassspotter-metadata", "obis-seagrassspotter-page-0", "obis-seagrassspotter-page-1"],
+      "version": "OBIS publication 2025-12-11; website recent-observation filter and display selection v2",
+      "title": "SeagrassSpotter.org Global Seagrass Point Dataset",
+      "publisher": "Project Seagrass via DASSH and the Ocean Biodiversity Information System",
+      "authoritative_url": "https://www.dassh.ac.uk/ipt/resource?r=seagrassspotter",
+      "observation_period": {
+        "start": "2021-01-02",
+        "end": "2025-12-09",
+        "label": "Recent accepted observations from 2021 through 2025; each feature retains its own event date"
+      },
+      "publication_or_release_date": "2025-12-11",
+      "asset_production_or_update_date": "2025-12-11",
+      "geographic_coverage": "7,247 quality-filtered, photo-associated citizen-science occurrences; the website displays a deterministic 500-point cartographic sample. Both are globally distributed but strongly sampling-biased and not wall-to-wall coverage",
+      "spatial_resolution": "Points with feature-level coordinate uncertainty retained; website filter accepts stated uncertainty up to 10 km",
+      "scientific_status": "direct_observation",
+      "measurement_or_classification_method": "Human observations submitted with associated images and species/date metadata, quality controlled by the publishing programme and exposed through OBIS. The website removes OBIS ON_LAND flags, missing or greater-than-10-km coordinate uncertainty, missing evidence/date/coordinates, absences, and observations before 2021. For the compact display it deterministically retains one hash-ranked observation per occupied one-degree cell, then fills a 500-point cap by hash rank; this is a cartographic, not statistical, sample.",
+      "license": {
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Unsworth, Jones, Rogers, Cullen-Unsworth and Lilley (2025), SeagrassSpotter; Project Seagrass, DASSH and OBIS.",
+        "redistribution": "DASSH IPT identifies the dataset as CC BY 4.0. Attribution and original evidence links are preserved; this display is a deterministic cartographic sample rather than meadow geometry."
+      },
+      "update_schedule": "DASSH IPT states monthly updates as checked 2026-08-24; the frozen publication used here remains the 2025-12-11 snapshot.",
+      "retrieval": {
+        "date": "2026-08-22",
+        "method": "Paginated OBIS v3 occurrence API snapshot plus dataset metadata endpoint; source pages and derived-filter counts are checksummed in pipeline-run.json.",
+        "url": "https://api.obis.org/v3/dataset/872b3454-7114-4ca9-914b-99b2518f86ee",
+        "availability_status": "verified",
+        "http_status": 200
+      },
+      "checksums": [
+        "OBIS response-page and derived GeoJSON SHA-256 values are preserved in pipeline-run.json and artifacts.json."
+      ],
+      "known_limitations": [
+        "Occurrences are sampling-biased presences and cannot establish meadow extent, absence, trend, condition, or permanence.",
+        "Citizen-science identification and coordinates retain observation and reporting uncertainty even after the explicit filter.",
+        "Older observations are excluded from this display, and regions with no points may simply have no participation or accessible record.",
+        "Only 500 of 7,247 accepted occurrences are displayed; the deterministic selection improves visual spread and payload size but must not be used for frequency, density, or prevalence inference."
+      ],
+      "processing_steps": [
+        "Retrieve every OBIS occurrence page and verify unique occurrence UUIDs against the reported total.",
+        "Retain only present, photo-associated 2021–2025 observations with valid coordinates, no ON_LAND flag, and stated uncertainty of 10 km or less.",
+        "Keep event date, species name, coordinate uncertainty and evidence URL; omit contributor contact information.",
+        "Select one stable hash-ranked record per occupied one-degree cell, then add globally hash-ranked accepted records to a 500-point display cap.",
+        "Render points only and never infer meadow polygons or absence."
+      ],
+      "website_layers": [
+        "seagrass-observations"
+      ],
+      "selection_rationale": "Selected as a rights-declared, authoritative aggregator record of direct seagrass observations. It adds real aquatic-vegetation evidence while exposing severe sampling and extent limitations."
+    },
+    {
+      "identifier": "GIBS.OCI_PACE_Chlorophyll_a.2026-08-20",
+      "pipeline_source_ids": ["gibs-oci-pace-chlorophyll-2026-08-20", "gibs-oci-pace-chlorophyll-layer-metadata"],
+      "version": "GIBS layer OCI_PACE_Chlorophyll_a; exact collection version for 2026-08-20 unresolved because the audited layer metadata maps only through PACE BGC NRT v3.1",
+      "title": "NASA GIBS PACE/OCI Chlorophyll a (L2) daily layer",
+      "publisher": "NASA Global Imagery Browse Services, with imagery supplied by the NASA Ocean Biology Processing Group",
+      "authoritative_url": "https://gibs.earthdata.nasa.gov/layer-metadata/v1.0/OCI_PACE_Chlorophyll_a.json",
+      "observation_period": {
+        "start": "2026-08-20",
+        "end": "2026-08-20",
+        "label": "20 August 2026 daily GIBS swaths"
+      },
+      "publication_or_release_date": null,
+      "publication_or_release_date_basis": "Not stated in the preserved GIBS metadata body. An HTTP metadata update header was observed during audit but is not used as a source-product release date.",
+      "asset_production_or_update_date": null,
+      "asset_production_or_update_date_basis": "Not established for the fixed GIBS render. The tile bytes were retrieved and frozen on 2026-08-22, but retrieval is not promoted into an upstream production/update date.",
+      "geographic_coverage": "Ocean swaths displayed on the stated day within Web Mercator bounds; cloud, glint, ice, land and retrieval failures leave substantial gaps",
+      "spatial_resolution": "PACE OCI Level-2 source families are approximately 1.2 km at nadir, but the exact collection version behind this GIBS date is unresolved; approximately 39 km display pixels in this prototype",
+      "scientific_status": "scientific_proxy",
+      "measurement_or_classification_method": "PACE OCI water-leaving radiance is processed through NASA ocean-colour algorithms to retrieve chlorophyll-a concentration, and GIBS renders the daily Level-2 swaths. The official GIBS layer metadata retrieved for this audit lists PACE BGC mappings only through NRT v3.1; it does not establish that the 2026-08-20 tiles came from the separately inventoried v3.2 collection.",
+      "display_value_mapping": {
+        "unit": "mg m^-3 chlorophyll-a",
+        "source_display_range": "Nonlinear GIBS bins from less than 0.0100 to 20.000 or more mg m^-3",
+        "transformation": "The nonlinear source-bin order is remapped monotonically to plasma; exact concentrations cannot be recovered from the PNG.",
+        "numeric_tooltip_available": false,
+        "colormap_url": "https://gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Chlorophyll.xml"
+      },
+      "license": {
+        "name": "NASA EOSDIS Data Use and Citation Guidance",
+        "url": "https://www.earthdata.nasa.gov/engage/open-data-services-software-policies/data-information-guidance",
+        "attribution": "NASA PACE Project and NASA Ocean Biology Processing Group.",
+        "redistribution": "Openly shared without restriction under EOSDIS guidance; citation requested."
+      },
+      "update_schedule": "Daily GIBS imagery; upstream production maturity and collection mappings can change, but this frozen layer will not silently advance.",
+      "retrieval": {
+        "date": "2026-08-22",
+        "method": "NASA GIBS WMTS fixed-date render tiles plus the official GIBS layer-metadata record. A separate inventory of all 147 v3.2 NRT granules intersecting 20 August 2026 is recorded only as contemporaneous context; it is not asserted as the tile provenance.",
+        "url": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/1.0.0/WMTSCapabilities.xml",
+        "availability_status": "verified",
+        "http_status": 200
+      },
+      "checksums": [
+        "Per-tile, colour-map, and GIBS layer-metadata SHA-256 values are preserved in pipeline-run.json and the source snapshot."
+      ],
+      "known_limitations": [
+        "Chlorophyll-a concentration is an explicitly labelled proxy for phytoplankton biomass and ocean productivity, not proof of kelp, seagrass, permanent aquatic vegetation, or ecosystem health.",
+        "This is a recent daily swath view with incomplete geographic coverage and may later be revised.",
+        "The exact production maturity is unresolved, so this layer is conservatively treated as provisional quick-look evidence; NASA notes that near-real-time inputs and calibration can be less optimal than later standard processing.",
+        "Coastal and optically complex waters can have larger retrieval uncertainty.",
+        "The exact PACE collection version used to render the fixed-date GIBS tiles is unresolved: official GIBS layer metadata audited 22 August 2026 lists source mappings only through BGC NRT v3.1, while v3.2 granules are recorded as same-day context only."
+      ],
+      "processing_steps": [
+        "Retrieve the fixed 20 August 2026 NASA GIBS render.",
+        "Preserve transparent gaps rather than filling them.",
+        "Preserve the official GIBS layer-metadata mapping record.",
+        "Inventory all 147 same-day v3.2 NRT granules through CMR as contextual evidence only, not as asserted GIBS-render provenance.",
+        "Remap the nonlinear ordered source bins to a perceptually ordered plasma display palette; do not expose invented numeric pixel values."
+      ],
+      "website_layers": [
+        "aquatic-chlorophyll"
+      ],
+      "selection_rationale": "Chosen only as an explicitly provisional, credential-free aquatic scientific proxy with visible no-observation gaps. It is not described as a complete global composite, and the unresolved GIBS collection mapping is exposed rather than guessed; a science-quality monthly product should replace it when a no-key reproducible path is locked."
+    },
+    {
+      "identifier": "C4124887054-OB_CLOUD",
+      "pipeline_source_ids": ["pace-oci-l2-bgc-nrt-3-2-context-2026-08-20-cmr"],
+      "version": "PACE_OCI_L2_BGC_NRT 3.2; contextual 2026-08-20 CMR inventory only",
+      "title": "PACE OCI Level-2 Regional Ocean Biogeochemical Properties — Near Real-time v3.2 context inventory",
+      "publisher": "NASA Ocean Biology Distributed Active Archive Center",
+      "authoritative_url": "https://cmr.earthdata.nasa.gov/search/concepts/C4124887054-OB_CLOUD.html",
+      "observation_period": {
+        "start": "2026-08-20",
+        "end": "2026-08-20",
+        "label": "147 v3.2 NRT granules intersecting 20 August 2026"
+      },
+      "publication_or_release_date": null,
+      "publication_or_release_date_basis": "No independently established v3.2 product release date is asserted; CMR presents a generic 2024-12-10 metadata updated value.",
+      "asset_production_or_update_date": null,
+      "asset_production_or_update_date_basis": "Not asserted for this contextual inventory. The complete CMR response was retrieved and frozen on 2026-08-22, which is not a granule-production date.",
+      "geographic_coverage": "Same-day global-orbit swath inventory; recorded as contemporaneous context, not asserted provenance for the GIBS render",
+      "spatial_resolution": "Approximately 1.2 km at nadir in the contextual Level-2 source collection",
+      "scientific_status": "scientific_proxy",
+      "measurement_or_classification_method": "CMR metadata inventory of 147 v3.2 NRT granules whose temporal extents intersect the selected day. No granule pixels are merged into the website asset, and current GIBS metadata does not map the display layer to this version.",
+      "license": {
+        "name": "NASA EOSDIS Data Use and Citation Guidance",
+        "url": "https://www.earthdata.nasa.gov/engage/open-data-services-software-policies/data-information-guidance",
+        "attribution": "NASA PACE Project and NASA Ocean Biology Processing Group.",
+        "redistribution": "Openly shared without restriction under EOSDIS guidance; citation requested."
+      },
+      "update_schedule": "Near-real-time rolling collection followed by revised science-quality processing; this contextual inventory is frozen.",
+      "retrieval": {
+        "date": "2026-08-22",
+        "method": "Fixed temporal CMR query for collection C4124887054-OB_CLOUD; the complete JSON response is checksummed and preserved.",
+        "url": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C4124887054-OB_CLOUD&temporal=2026-08-20T00%3A00%3A00Z%2C2026-08-20T23%3A59%3A59Z&page_size=2000",
+        "availability_status": "verified",
+        "http_status": 200
+      },
+      "checksums": [
+        "The complete CMR response SHA-256 is preserved in pipeline-run.json and the source snapshot."
+      ],
+      "known_limitations": [
+        "Temporal coexistence does not prove that GIBS used this collection version for its fixed-date render.",
+        "This is a metadata inventory, not a processed global chlorophyll composite or a website display input."
+      ],
+      "processing_steps": [
+        "Query the exact v3.2 CMR concept for the selected UTC day.",
+        "Validate 147 dated granule identifiers and preserve their metadata as context only."
+      ],
+      "website_layers": [],
+      "selection_rationale": "Retained to document what official v3.2 NRT data existed on the selected day while explicitly avoiding the unsupported inference that it supplied the GIBS tiles."
+    },
+    {
+      "identifier": "CCR-RESTORATION-REGISTER.2026-08-22.v1",
+      "pipeline_source_ids": [
+        "restoration-great-green-wall-evidence",
+        "restoration-living-indus-recognition",
+        "restoration-living-indus-profile",
+        "restoration-living-indus-unep-release",
+        "restoration-regreening-africa-recognition",
+        "restoration-regreening-africa-annual-report",
+        "restoration-mar-menor-recognition",
+        "restoration-mar-menor-profile",
+        "restoration-mar-menor-miteco-framework"
+      ],
+      "version": "1.0.0",
+      "title": "Curated reported restoration initiatives",
+      "publisher": "Climate Change Research, compiled from named UN and government-authority records",
+      "authoritative_url": "https://www.decadeonrestoration.org/world-restoration-flagships",
+      "observation_period": {
+        "start": null,
+        "end": "2025-06-11",
+        "label": "Programme start years span 2007–2022; dated reporting evidence extends through 11 June 2025; not an Earth-observation period"
+      },
+      "publication_or_release_date": "2026-08-22",
+      "asset_production_or_update_date": "2026-08-22",
+      "geographic_coverage": "Four illustrative multi-country or regional initiatives; deliberately non-exhaustive",
+      "spatial_resolution": "Approximate programme centroids only; no project boundaries",
+      "scientific_status": "project_reported_information",
+      "measurement_or_classification_method": "Manual transcription of authority, programme status, source-supported year/date precision, reported restored area, reported area under restoration and target area from named official sources. Completion, progress and target fields remain separate.",
+      "license": {
+        "name": "Repository-authored factual compilation; public display authorized for this publication",
+        "url": "./data/rights/restoration-compilation.html",
+        "attribution": "Each feature cites its reporting authority and evidence URL.",
+        "redistribution": "No external source text or geometry is reproduced; factual fields and links are compiled. Public display is authorized for this checksum-locked publication, but no general reuse license is granted for the compilation."
+      },
+      "update_schedule": "Manual, evidence-led updates; no fixed schedule.",
+      "retrieval": {
+        "date": "2026-08-22",
+        "method": "Manual review of official UNCCD, UNEP and UN Decade on Ecosystem Restoration pages, a MITECO government page, and a Regreening Africa annual-report PDF; all nine responses are frozen in the source snapshot.",
+        "url": "https://www.decadeonrestoration.org/world-restoration-flagships",
+        "availability_status": "verified",
+        "http_status": 200
+      },
+      "checksums": [
+        "The committed GeoJSON SHA-256 is preserved in artifacts.json.",
+        "Per-response SHA-256 values for all nine authority pages/reports are preserved in pipeline-run.json and the source snapshot."
+      ],
+      "known_limitations": [
+        "This is not a global registry and absence from the layer does not mean no project exists.",
+        "Points are approximate programme centroids and are not legal or operational boundaries.",
+        "Reported restoration is not independently verified vegetation change.",
+        "Targets are ambitions and are never counted as completed restoration."
+      ],
+      "processing_steps": [
+        "Transcribe only fields supported by a named authority page.",
+        "Separate project-reported completed area, area under restoration and target area.",
+        "Use year-only fields or null rather than inventing day-level precision.",
+        "Store null when a supported completed-area figure is unavailable.",
+        "Validate every feature as project-reported information."
+      ],
+      "website_layers": [
+        "restoration-projects"
+      ],
+      "selection_rationale": "A small, auditable register demonstrates the required project/observation separation without implying comprehensive global coverage."
+    },
+    {
+      "identifier": "NATURAL_EARTH.5.1.2.110M.LAND",
+      "pipeline_source_ids": ["natural-earth-110m-land"],
+      "version": "Natural Earth 5.1.2, 1:110m",
+      "title": "Natural Earth land polygons",
+      "publisher": "Natural Earth",
+      "authoritative_url": "https://github.com/nvkelso/natural-earth-vector/releases/tag/v5.1.2",
+      "observation_period": {
+        "start": null,
+        "end": null,
+        "label": "Not applicable — cartographic context, not a greenery observation"
+      },
+      "publication_or_release_date": "2022-05-16",
+      "asset_production_or_update_date": "2022-05-16",
+      "geographic_coverage": "Global generalized land polygons",
+      "spatial_resolution": "1:110 million cartographic scale",
+      "scientific_status": "modelled_or_inferred_information",
+      "measurement_or_classification_method": "Generalized cartographic land polygons used only as visual context.",
+      "license": {
+        "name": "Natural Earth public domain",
+        "url": "https://www.naturalearthdata.com/about/terms-of-use/",
+        "attribution": "Made with Natural Earth.",
+        "redistribution": "Public domain."
+      },
+      "update_schedule": "Irregular cartographic releases.",
+      "retrieval": {
+        "date": "2026-08-22",
+        "method": "Fetched the project-maintained GeoJSON representation from the immutable Natural Earth v5.1.2 Git tag.",
+        "url": "https://github.com/nvkelso/natural-earth-vector/blob/v5.1.2/geojson/ne_110m_land.geojson",
+        "availability_status": "verified",
+        "http_status": 200
+      },
+      "checksums": [
+        "Retrieved and committed file SHA-256 values are preserved in pipeline-run.json and artifacts.json."
+      ],
+      "known_limitations": [
+        "Highly generalized and unsuitable for borders, navigation, legal boundaries, coast-scale analysis, or scientific measurement.",
+        "It is a basemap reference only and must not be interpreted as evidence of vegetation."
+      ],
+      "processing_steps": [
+        "Copy the verified GeoJSON without scientific transformation."
+      ],
+      "website_layers": [
+        "cartographic-land"
+      ],
+      "selection_rationale": "Small, public-domain context geometry keeps the map usable without a paid basemap or secret browser key."
+    }
+  ],
+  "layers": [
+    {
+      "id": "natural-types",
+      "title": "Terrestrial cover classes",
+      "short_title": "Terrestrial cover",
+      "group": "terrestrial",
+      "kind": "raster_image",
+      "data_url": "./data/images/natural-types.png",
+      "dataset_ids": [
+        "MCD12Q1.061.A2024001"
+      ],
+      "scientific_status": "remote_sensing_classification",
+      "observation_label": "2024 annual classification",
+      "source_resolution": "500 m source",
+      "display_resolution": "~39 km prototype",
+      "coverage_label": "Global land; classified pixels",
+      "default_visible": true,
+      "default_opacity": 0.9,
+      "what_it_measures": "Selected IGBP vegetation classes plus sparse/barren and permanent snow/ice context assigned from MODIS observations, excluding the separately displayed cropland and permanent-wetland classes.",
+      "what_it_does_not_measure": "Naturalness, management status, biodiversity, land condition, or a distinct tundra biome.",
+      "limitations_summary": "Natural versus managed status is unresolved; plantations may appear as forest, pasture is not separated, and sparse/polar cover is not a tundra map.",
+      "legend": {
+        "type": "categorical",
+        "entries": [
+          {"label": "Evergreen needleleaf forest class", "color": "#005226"},
+          {"label": "Evergreen broadleaf forest class", "color": "#00703e"},
+          {"label": "Deciduous needleleaf forest class", "color": "#238b45"},
+          {"label": "Deciduous broadleaf forest class", "color": "#4eac5b"},
+          {"label": "Mixed forest class", "color": "#80cd79"},
+          {"label": "Closed shrubland", "color": "#6a51a3"},
+          {"label": "Open shrubland", "color": "#9e78ba"},
+          {"label": "Woody savanna", "color": "#d55e00"},
+          {"label": "Savanna", "color": "#e69f00"},
+          {"label": "Grassland", "color": "#f0e442"},
+          {"label": "Sparse / barren", "color": "#7d7d7d"},
+          {"label": "Snow / ice", "color": "#f7f7f7"}
+        ]
+      }
+    },
+    {
+      "id": "vegetation-density",
+      "title": "Vegetation greenness (NDVI)",
+      "short_title": "NDVI greenness",
+      "group": "density",
+      "kind": "raster_image",
+      "data_url": "./data/images/ndvi.png",
+      "dataset_ids": [
+        "MOD13A3.061.A2026182"
+      ],
+      "scientific_status": "derived_indicator",
+      "observation_label": "July 2026 monthly composite",
+      "source_resolution": "1 km source product",
+      "display_resolution": "~39 km prototype",
+      "coverage_label": "Global land; valid retrievals",
+      "default_visible": false,
+      "default_opacity": 0.78,
+      "what_it_measures": "Red versus near-infrared reflectance contrast associated with green photosynthetic vegetation.",
+      "what_it_does_not_measure": "Biomass, carbon, species, ecological quality, permanence, or crop yield.",
+      "limitations_summary": "A single month combines seasons; clouds, snow, soil, saturation and processing affect values.",
+      "legend": {
+        "type": "gradient",
+        "colors": ["#440154", "#3b528b", "#21918c", "#5ec962", "#fde725"],
+        "low_label": "≈0 NDVI",
+        "high_label": "≈1 NDVI"
+      }
+    },
+    {
+      "id": "agriculture",
+      "title": "Cropland",
+      "short_title": "Agriculture",
+      "group": "human-managed",
+      "kind": "raster_image",
+      "data_url": "./data/images/agriculture.png",
+      "dataset_ids": [
+        "MCD12Q1.061.A2024001"
+      ],
+      "scientific_status": "remote_sensing_classification",
+      "observation_label": "2024 annual classification",
+      "source_resolution": "500 m source",
+      "display_resolution": "~39 km prototype",
+      "coverage_label": "Global classified cropland pixels",
+      "default_visible": true,
+      "default_opacity": 0.95,
+      "what_it_measures": "MODIS IGBP cropland and cropland/natural-vegetation mosaic classes.",
+      "what_it_does_not_measure": "Ecological equivalence to natural vegetation, crop type, yield, or reliably separated pasture.",
+      "limitations_summary": "Pasture is omitted because this source cannot distinguish it globally from natural grassland.",
+      "legend": {
+        "type": "categorical",
+        "entries": [
+          {"label": "Cropland", "color": "#8c510a"},
+          {"label": "Cropland / natural mosaic", "color": "#dfc27d"}
+        ]
+      }
+    },
+    {
+      "id": "wetlands",
+      "title": "Permanent wetlands",
+      "short_title": "Wetlands",
+      "group": "wet-and-coastal",
+      "kind": "raster_image",
+      "data_url": "./data/images/wetlands.png",
+      "dataset_ids": [
+        "MCD12Q1.061.A2024001"
+      ],
+      "scientific_status": "remote_sensing_classification",
+      "observation_label": "2024 annual classification",
+      "source_resolution": "500 m source",
+      "display_resolution": "~39 km prototype",
+      "coverage_label": "Global classified permanent-wetland pixels",
+      "default_visible": true,
+      "default_opacity": 0.95,
+      "what_it_measures": "The MODIS IGBP permanent-wetland land-cover class.",
+      "what_it_does_not_measure": "All Ramsar sites, seasonal inundation, wetland condition, legal designation, or mangrove extent.",
+      "limitations_summary": "Coarse global classification can miss narrow, seasonal and mixed wetlands.",
+      "legend": {
+        "type": "categorical",
+        "entries": [
+          {"label": "Permanent wetland", "color": "#0072b2"}
+        ]
+      }
+    },
+    {
+      "id": "wetland-context",
+      "title": "Broad wetland-type context",
+      "short_title": "Wetland context",
+      "group": "wet-and-coastal",
+      "kind": "raster_image",
+      "data_url": "./data/images/wetland-context.png",
+      "dataset_ids": [
+        "GLWD.2.0.MAIN_CLASS"
+      ],
+      "scientific_status": "modelled_or_inferred_information",
+      "observation_label": "Source inputs span approximately 1990–2020",
+      "source_resolution": "15 arc-seconds (~500 m)",
+      "display_resolution": "~20 km sampled prototype",
+      "coverage_label": "56°S–84°N; selected GLWD wetland classes",
+      "default_visible": false,
+      "default_opacity": 0.82,
+      "what_it_measures": "The largest-area selected GLWD wetland class present among wetland classes in each source cell, grouped into four broad contexts.",
+      "what_it_does_not_measure": "A majority land-cover class, current wetland extent, local wetland fraction, condition, legal designation, or a synchronized observation.",
+      "limitations_summary": "A heterogeneous 1990–2020 synthesis sampled to a coarse display; small wetlands and boundaries can be omitted or aliased.",
+      "legend": {
+        "type": "categorical",
+        "entries": [
+          {"label": "Forested wetland context", "color": "#009e73"},
+          {"label": "Peatland context", "color": "#cc79a7"},
+          {"label": "Non-forested inland wetland context", "color": "#0072b2"},
+          {"label": "Coastal wetland context", "color": "#e69f00"}
+        ]
+      }
+    },
+    {
+      "id": "mangroves",
+      "title": "Mangrove extent",
+      "short_title": "Mangroves",
+      "group": "wet-and-coastal",
+      "kind": "raster_image",
+      "data_url": "./data/images/mangroves.png",
+      "dataset_ids": [
+        "GMW.4.1.12.2025"
+      ],
+      "scientific_status": "remote_sensing_classification",
+      "observation_label": "2025 annual classification",
+      "source_resolution": "30 m source",
+      "display_resolution": "~20 km with display halo",
+      "coverage_label": "Global mangrove habitat domain",
+      "default_visible": true,
+      "default_opacity": 1.0,
+      "what_it_measures": "Annual classified mangrove presence from optical and radar observations.",
+      "what_it_does_not_measure": "Mangrove health, biomass, restoration success, or exact area in this visibly dilated prototype.",
+      "limitations_summary": "Narrow extents receive a one-pixel halo so they remain visible; do not calculate area from the display.",
+      "legend": {
+        "type": "categorical",
+        "entries": [
+          {"label": "Mangrove presence + visual halo", "color": "#cc79a7"}
+        ]
+      }
+    },
+    {
+      "id": "seagrass-observations",
+      "title": "Recent seagrass observations",
+      "short_title": "Seagrass observations",
+      "group": "aquatic-observations",
+      "kind": "geojson_points",
+      "data_url": "./data/seagrass-observations.geojson",
+      "dataset_ids": [
+        "OBIS.872b3454-7114-4ca9-914b-99b2518f86ee"
+      ],
+      "scientific_status": "direct_observation",
+      "observation_label": "Feature dates: 2021–2025",
+      "source_resolution": "Point-specific uncertainty ≤10 km",
+      "display_resolution": "Point symbols; not meadow extent",
+      "coverage_label": "500-point display sample from 7,247 filtered observations; globally incomplete and sampling-biased",
+      "default_visible": true,
+      "default_opacity": 0.82,
+      "what_it_measures": "A deterministic 500-point cartographic sample of photo-associated seagrass-presence reports with a species name, event date, coordinates and stated coordinate uncertainty.",
+      "what_it_does_not_measure": "Seagrass meadow boundaries, absence, total area, ecological condition, permanence, trend, or representative global coverage.",
+      "limitations_summary": "Citizen-science presences cluster where people report; 500 of 7,247 accepted points are selected for display, not statistically sampled, and each point is dated and uncertain rather than an extent polygon.",
+      "legend": {
+        "type": "symbols",
+        "entries": [
+          {"label": "Displayed photo-associated presence", "color": "#f0e442"}
+        ]
+      }
+    },
+    {
+      "id": "aquatic-chlorophyll",
+      "title": "Ocean chlorophyll-a proxy",
+      "short_title": "Chlorophyll proxy",
+      "group": "aquatic",
+      "kind": "raster_image",
+      "data_url": "./data/images/chlorophyll-proxy.png",
+      "dataset_ids": [
+        "GIBS.OCI_PACE_Chlorophyll_a.2026-08-20"
+      ],
+      "scientific_status": "scientific_proxy",
+      "observation_label": "20 Aug 2026 daily GIBS swaths",
+      "source_resolution": "PACE L2 family ~1.2 km; exact GIBS version unresolved",
+      "display_resolution": "~39 km prototype",
+      "coverage_label": "Observed ocean swaths only; substantial gaps",
+      "default_visible": true,
+      "default_opacity": 0.72,
+      "what_it_measures": "Provisional GIBS-rendered satellite-retrieved estimate of surface-water chlorophyll-a concentration in observed swaths.",
+      "what_it_does_not_measure": "Permanent aquatic vegetation, kelp, seagrass, total productivity, or ecosystem health.",
+      "limitations_summary": "Daily swaths are incomplete and revisable; transparent space is no observation, not zero chlorophyll, and the exact GIBS source-collection version is unresolved.",
+      "legend": {
+        "type": "gradient",
+        "colors": ["#0d0887", "#7e03a8", "#cc4778", "#f89540", "#f0f921"],
+        "low_label": "<0.01 mg m⁻³",
+        "high_label": "≥20 mg m⁻³"
+      }
+    },
+    {
+      "id": "restoration-projects",
+      "title": "Reported restoration initiatives",
+      "short_title": "Reported projects",
+      "group": "projects",
+      "kind": "geojson_points",
+      "data_url": "./data/restoration-projects.geojson",
+      "dataset_ids": [
+        "CCR-RESTORATION-REGISTER.2026-08-22.v1"
+      ],
+      "scientific_status": "project_reported_information",
+      "observation_label": "Evidence dates vary; sources retrieved 22 Aug 2026",
+      "source_resolution": "Approximate programme centroids",
+      "display_resolution": "Point symbols; not boundaries",
+      "coverage_label": "Four illustrative initiatives; not exhaustive",
+      "default_visible": true,
+      "default_opacity": 1.0,
+      "what_it_measures": "Nothing remotely sensed: it displays attributed programme reports, statuses, dates and separately recorded areas.",
+      "what_it_does_not_measure": "Observed vegetation gain, completion, survival, quality, additionality, or project boundaries.",
+      "limitations_summary": "Targets remain targets; reported restored area remains project-reported and is never promoted to direct observation.",
+      "legend": {
+        "type": "symbols",
+        "entries": [
+          {"label": "Ongoing programme report; target is not completion", "color": "#56b4e9"}
+        ]
+      }
+    }
+  ],
+  "reference_layers": [
+    {
+      "id": "cartographic-land",
+      "dataset_id": "NATURAL_EARTH.5.1.2.110M.LAND",
+      "data_url": "./data/reference/natural-earth-land.geojson",
+      "role": "Cartographic context only; not greenery evidence"
+    }
+  ],
+  "alternatives_rejected_or_deferred": [
+    {
+      "dataset": "ESA WorldCover 2021 v200",
+      "authoritative_url": "https://doi.org/10.5281/zenodo.7254221",
+      "decision": "deferred",
+      "reason": "Scientifically valuable and much higher resolution, with useful sparse/moss classes, but its latest complete epoch is 2021 and the global 10 m package is unsuitable for this first repository-bundled low-resolution prototype. It is the leading higher-resolution follow-on candidate."
+    },
+    {
+      "dataset": "Copernicus Climate Change Service Land Cover 300 m v2.1.1",
+      "authoritative_url": "https://cds.climate.copernicus.eu/datasets/satellite-land-cover",
+      "decision": "not selected for prototype",
+      "reason": "Strong annual long-term series, but the audited global series was less current than the verified 2024 MCD12Q1 epoch."
+    },
+    {
+      "dataset": "Ramsar Sites Information Service",
+      "authoritative_url": "https://rsis.ramsar.org/",
+      "decision": "not used as vegetation extent",
+      "reason": "Ramsar records designated sites and boundaries, not wall-to-wall observed wetland vegetation. It may become a separately labelled designation layer."
+    },
+    {
+      "dataset": "UNEP-WCMC Global Distribution of Seagrasses v7.1",
+      "authoritative_url": "https://doi.org/10.34892/x6r3-d211",
+      "decision": "rejected for bundled public map",
+      "reason": "The current UNEP-WCMC general data license at https://www.unep-wcmc.org/general-data-license restricts commercial use and redistribution. No tiles or global geometry are bundled without a separate rights decision."
+    },
+    {
+      "dataset": "Allen Coral Atlas global seagrass habitat map",
+      "authoritative_url": "https://allencoralatlas.org/",
+      "decision": "deferred pending written permission",
+      "reason": "The global reproduction terms require a separate permissions assessment despite general attribution language."
+    },
+    {
+      "dataset": "Copernicus Marine multi-sensor chlorophyll products",
+      "authoritative_url": "https://data.marine.copernicus.eu/",
+      "decision": "deferred",
+      "reason": "Scientifically preferable monthly/global composites exist, but the first frozen no-secret prototype uses an openly rendered PACE daily layer. A later stage should add a credential-free, license-audited reproducible Copernicus Marine acquisition path."
+    },
+    {
+      "dataset": "Global Pasture Watch cultivated-grassland probability v1",
+      "authoritative_url": "https://developers.google.com/earth-engine/datasets/catalog/projects_global-pasture-watch_assets_ggc-30m_v1_cultiv-grassland_p",
+      "decision": "audited and deferred from the static prototype",
+      "reason": "The stable peer-reviewed 2022 global probability layer is scientifically suitable as modelled or inferred managed-grassland evidence, but its audited distribution path is an Earth Engine asset or a very large build-time raster workflow. Adding it would require a credential or substantially larger ingestion decision, so grassland is not silently relabelled as pasture and the source remains the priority agriculture follow-on."
+    }
+  ]
+}
