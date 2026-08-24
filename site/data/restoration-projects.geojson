@@ -1,0 +1,148 @@
+{
+  "type": "FeatureCollection",
+  "name": "curated-reported-restoration-initiatives-v1",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.0, 15.0]
+      },
+      "properties": {
+        "project_id": "restoration-great-green-wall",
+        "name": "Great Green Wall Initiative",
+        "implementing_authority": "African Union Commission; Pan-African Agency of the Great Green Wall; participating national governments in 22 countries",
+        "reporting_or_recognition_authority": "United Nations Convention to Combat Desertification (UNCCD)",
+        "start_year": 2007,
+        "start_year_basis": "Launched in 2007 by the African Union",
+        "status": "ongoing",
+        "status_as_of": null,
+        "evidence_date": null,
+        "retrieved_date": "2026-08-22",
+        "reported_restored_area_ha": null,
+        "reported_area_under_restoration_ha": null,
+        "reported_area_operator": null,
+        "area_evidence_date": null,
+        "reported_area_qualifier": "The cited UNCCD page provides no single completed or under-restoration area suitable for this feature.",
+        "target_area_ha": 100000000,
+        "target_area_operator": null,
+        "target_year": 2030,
+        "area_basis": "The 100 million hectares figure is a 2030 programme target, not completed restoration or a current area-under-restoration measurement.",
+        "evidence_url": "https://www.unccd.int/our-work/ggwi",
+        "secondary_evidence_urls": [],
+        "scientific_status": "project_reported_information",
+        "location_precision": "Illustrative programme centroid across the Sahel; not a boundary",
+        "limitations": "The authoritative page is undated, so no evidence or status-as-of date is asserted. National implementation and reporting are heterogeneous, and the point does not locate completed work."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [69.3, 29.5]
+      },
+      "properties": {
+        "project_id": "restoration-living-indus",
+        "name": "Living Indus",
+        "implementing_authority": "Government of Pakistan — Ministry of Climate Change and Environmental Coordination; Living Indus Initiative",
+        "reporting_or_recognition_authority": "UNEP and FAO through the UN Decade on Ecosystem Restoration",
+        "implementation_partners": "United Nations Resident Coordinator's Office in Pakistan; Food and Agriculture Organization of the United Nations; local communities and civil-society organizations",
+        "start_year": 2022,
+        "start_year_basis": "Officially launched at COP27 in 2022",
+        "status": "ongoing",
+        "status_as_of": "2024-02-13",
+        "evidence_date": "2024-02-13",
+        "retrieved_date": "2026-08-22",
+        "reported_restored_area_ha": null,
+        "reported_area_under_restoration_ha": 1350000,
+        "reported_area_operator": null,
+        "area_evidence_date": null,
+        "reported_area_qualifier": "The current undated UN Decade profile labels 1,350,000 hectares as under restoration; a dated 2024-02-13 recognition release describes the same figure as already restored. This feature conservatively stores it as under restoration and does not imply independent verification.",
+        "target_area_ha": 25000000,
+        "target_area_operator": null,
+        "target_year": 2030,
+        "area_basis": "Project-reported area under restoration and a separate programme target; neither is an independently observed vegetation-gain measurement.",
+        "evidence_url": "https://www.decadeonrestoration.org/initiative-restore-more-30-cent-pakistans-indus-river-basin-2030-named-one-seven-un-world",
+        "secondary_evidence_urls": [
+          "https://www.decadeonrestoration.org/living-indus",
+          "https://www.unep.org/news-and-stories/press-release/nature-staging-comeback-un-recognizes-seven-world-restoration"
+        ],
+        "scientific_status": "project_reported_information",
+        "location_precision": "Illustrative Indus-basin centroid; not a project boundary",
+        "limitations": "The two official UN pages use conflicting progress terminology for the same area. The reported figure is not independently verified vegetation gain and may combine multiple ecosystems and intervention types."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [21.0, 5.0]
+      },
+      "properties": {
+        "project_id": "restoration-regreening-africa",
+        "name": "Regreening Africa",
+        "implementing_authority": "Center for International Forestry Research and World Agroforestry (CIFOR-ICRAF)",
+        "reporting_or_recognition_authority": "UNEP and FAO through the UN Decade on Ecosystem Restoration",
+        "first_programme_implementation_partners": "World Vision Australia; Catholic Relief Services; Oxfam Great Britain; CARE Netherlands; Sahel Eco",
+        "start_year": 2017,
+        "start_year_basis": "The European Union-funded first programme period began in 2017",
+        "status": "ongoing",
+        "status_as_of": "2024-02-13",
+        "evidence_date": "2024-02-13",
+        "retrieved_date": "2026-08-22",
+        "reported_restored_area_ha": null,
+        "reported_area_under_restoration_ha": 352500,
+        "reported_area_operator": ">",
+        "area_evidence_date": "2024-02-13",
+        "reported_area_qualifier": "The dated recognition release reports restoration underway on more than 352,500 hectares; this is a lower bound for area under restoration, not completed area.",
+        "target_area_ha": 5000000,
+        "target_area_operator": "≈",
+        "target_year": 2030,
+        "area_basis": "A reported lower bound for area under restoration and a separate approximate 2030 programme target; neither is treated as completed restoration.",
+        "evidence_url": "https://www.decadeonrestoration.org/initiative-green-5-million-hectares-africa-recognized-one-seven-un-world-restoration-flagships",
+        "secondary_evidence_urls": [
+          "https://regreeningafrica.org/wp-content/uploads/2019/04/2019_AnnualReport_Public_Emailable.pdf"
+        ],
+        "scientific_status": "project_reported_information",
+        "location_precision": "Illustrative centroid for a multi-country African programme; not a boundary",
+        "limitations": "The 2030 target is described both as five million and almost five million hectares. The point compresses work across eight countries and must not be interpreted as an intervention boundary or proof of ecological recovery."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-0.79, 37.73]
+      },
+      "properties": {
+        "project_id": "restoration-mar-menor",
+        "name": "Mar Menor lagoon restoration",
+        "implementing_authority": "Government of Spain — Ministry for Ecological Transition and Demographic Challenge (MITECO), Framework of Priority Actions to Recover the Mar Menor (MAPMM)",
+        "reporting_or_recognition_authority": "UNEP and FAO through the UN Decade on Ecosystem Restoration",
+        "start_year": 2022,
+        "start_year_basis": "MITECO states that MAPMM execution began in February 2022; the framework was presented in 2021",
+        "status": "ongoing",
+        "status_as_of": "2025-06-11",
+        "evidence_date": "2025-06-11",
+        "retrieved_date": "2026-08-22",
+        "reported_restored_area_ha": null,
+        "reported_area_under_restoration_ha": 8770,
+        "reported_area_operator": null,
+        "area_evidence_date": null,
+        "reported_area_qualifier": "The current undated UN Decade profile labels the same 8,770 hectares as under restoration and to be restored by 2030; these values describe one programme footprint and must not be added.",
+        "target_area_ha": 8770,
+        "target_area_operator": null,
+        "target_year": 2030,
+        "area_basis": "The under-restoration and target figures describe the same project-reported footprint, not completed restoration or two additive areas.",
+        "evidence_url": "https://www.decadeonrestoration.org/spains-mar-menor-lagoon-already-has-legal-rights-it-now-recognized-un-world-restoration-flagship",
+        "secondary_evidence_urls": [
+          "https://www.decadeonrestoration.org/ecosystems-restoration-mar-menor",
+          "https://www.miteco.gob.es/es/ministerio/planes-estrategias/mar-menor/marco-actuaciones-prioritarias.html"
+        ],
+        "scientific_status": "project_reported_information",
+        "location_precision": "Lagoon centroid; the point is not the intervention boundary",
+        "limitations": "The progress-area profile is undated, so no area evidence date is asserted. The flagship comprises multiple planned and ongoing interventions, and neither the point nor target area proves restored ecological condition."
+      }
+    }
+  ]
+}

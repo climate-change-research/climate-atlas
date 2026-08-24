@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "publication_id": "climate-atlas-greenery-stage1-2026-08-24-v1",
+  "research_repository": "climate-change-research/Research",
+  "research_commit": "a364c940496bca278a6518a66e15f4c9bdd5ff77",
+  "research_snapshot": "global-greenery-stage1-2026-08-22-v1",
+  "development_repository": "climate-change-research/Climate-Atlas-Development",
+  "development_commit": "605f6d5787bacc35f2a33a2bd08fe4cd44ff45ba",
+  "public_repository": "climate-change-research/climate-atlas",
+  "runtime_requires_credentials": false,
+  "runtime_requires_scientific_publishers": false
+}

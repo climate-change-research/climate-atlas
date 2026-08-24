@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "files": [
+    {
+      "path": ".nojekyll",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "COPYRIGHT.md",
+      "size_bytes": 909,
+      "sha256": "10a5ff45a5bdc7007fc62ea599cc8d3cf14be539525f12afed11de3184326019"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "size_bytes": 8225,
+      "sha256": "382c4f8bd3b9004759482e68187d00eb72b75cadbe7dfec996ec5668b57fe659"
+    },
+    {
+      "path": "assets/index-CutKhwpB.css",
+      "size_bytes": 94746,
+      "sha256": "12ad41df7f0e0bfe31617a786801781ac55fdd86cdd0abc3ac65b5b21e27e570"
+    },
+    {
+      "path": "assets/index-DQIM7CBN.js",
+      "size_bytes": 967969,
+      "sha256": "c9b89e40d57bff0740d209ac9bf693f3159f0cf6efef8dddce1a1addedf3adc4"
+    },
+    {
+      "path": "data/artifacts-public.json",
+      "size_bytes": 2266,
+      "sha256": "031f16880d498c1819c4457cc989c4f2cb16c8eb15f3f301d66abc0e32ae94eb"
+    },
+    {
+      "path": "data/images/agriculture.png",
+      "size_bytes": 11648,
+      "sha256": "730f038dfa65aa57332a468ea3d3591488b6af05585c2ea4d82b86cc9de2efcf"
+    },
+    {
+      "path": "data/images/chlorophyll-proxy.png",
+      "size_bytes": 190975,
+      "sha256": "37d5c496a3d85de51effcd0832aa6a02fd8348f71281de6beb1cfc8de72228ab"
+    },
+    {
+      "path": "data/images/mangroves.png",
+      "size_bytes": 21302,
+      "sha256": "b252049ae9206cc534435201f0ee708bb5600ad9dd5c4e5947938032d85c5339"
+    },
+    {
+      "path": "data/images/natural-types.png",
+      "size_bytes": 68682,
+      "sha256": "ee5bb0cb39b05edca0c9fe49a4fbdfc73d2a209dc1e090e74d8fe9bf64bd4164"
+    },
+    {
+      "path": "data/images/ndvi.png",
+      "size_bytes": 173786,
+      "sha256": "4fe1d1a8de6e816db1a429fd23c7c3631d3ef51cad1711da962536f288bc344e"
+    },
+    {
+      "path": "data/images/wetland-context.png",
+      "size_bytes": 151436,
+      "sha256": "888a08f2c1e966a23c9699bf8f97bd6e52eab98bce471336131c1d08861b8b97"
+    },
+    {
+      "path": "data/images/wetlands.png",
+      "size_bytes": 6492,
+      "sha256": "95068d0269778b22bd16a2b0886ee4cc21c852c2b275b71e9625dd284c2f7982"
+    },
+    {
+      "path": "data/publication-receipt.json",
+      "size_bytes": 1160,
+      "sha256": "b8755cb5d08389389a09e9465bbc4a0ece8135fd21f78d76b2c45ca513e9e60f"
+    },
+    {
+      "path": "data/reference/natural-earth-land.geojson",
+      "size_bytes": 138160,
+      "sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9"
+    },
+    {
+      "path": "data/restoration-projects.geojson",
+      "size_bytes": 8979,
+      "sha256": "e206c9b0ea1d2bf87bf2cab442503a15577a0c89bd591d2fbf8018855d825ea0"
+    },
+    {
+      "path": "data/rights/restoration-compilation.html",
+      "size_bytes": 1086,
+      "sha256": "32afd1bfe9a55ba46dcec83892fe911f31130a0f76bdbe16acfdd8c90453f7b3"
+    },
+    {
+      "path": "data/seagrass-observations.geojson",
+      "size_bytes": 292925,
+      "sha256": "4fc43027ba2121e37ad050d8e2cebd1392ab3caace91fb0ed23e925a1b01b5e1"
+    },
+    {
+      "path": "data/source-manifest.json",
+      "size_bytes": 54853,
+      "sha256": "22e16fc0b1e80e5b386cae8855f5ed8e4d4553c7bd34c994443de7dc19baeaf7"
+    },
+    {
+      "path": "index.html",
+      "size_bytes": 741,
+      "sha256": "faaff2740d6eef5ffa689910881c849c395978877efa8897804265ccc8edaf36"
+    },
+    {
+      "path": "licenses/maplibre-gl-LICENSE.txt",
+      "size_bytes": 5984,
+      "sha256": "ee5fc05a0677eaf69601d2c7db0d9ecd6cc27c3abc1d0733bc9ed34707cf8ef2"
+    },
+    {
+      "path": "licenses/npm-production-licenses.json",
+      "size_bytes": 4495,
+      "sha256": "a00b6ea5c8909ebb596c21fe036f5ddbc5b16ea2e4ce5d072fef7f7c0033ea1c"
+    }
+  ]
+}

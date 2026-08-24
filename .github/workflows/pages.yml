@@ -1,0 +1,63 @@
+name: Deploy GitHub Pages
+
+on:
+  workflow_run:
+    workflows: ["Public artifact quality"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    if: >-
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          persist-credentials: false
+      - name: Reverify exact deployment bytes
+        run: |
+          set -euo pipefail
+          sha256sum -c SHA256SUMS.txt
+          find site -type f -printf '%P\n' | LC_ALL=C sort > /tmp/site-actual.txt
+          jq -r '.files[].path' SITE-FILE-MANIFEST.json | LC_ALL=C sort > /tmp/site-expected.txt
+          diff -u /tmp/site-expected.txt /tmp/site-actual.txt
+          jq -r '.files[] | "\(.sha256)  site/\(.path)"' SITE-FILE-MANIFEST.json | sha256sum -c -
+          test -z "$(find site -type l -print -quit)"
+      - name: Configure Pages
+        uses: actions/configure-pages@v6.0.0
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: site
+          include-hidden-files: true
+  deploy:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy exact artifact
+        id: deployment
+        uses: actions/deploy-pages@v5.0.0
+

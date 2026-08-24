@@ -1,0 +1,76 @@
+name: Full repository mirror export
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - .github/backup-export-trigger.txt
+      - .github/workflows/full-repository-export.yml
+
+permissions:
+  contents: read
+  actions: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Create and round-trip verify complete Git export
+        shell: bash
+        run: |
+          set -euo pipefail
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          work="$RUNNER_TEMP/git-export-work"
+          out="$RUNNER_TEMP/git-export"
+          mirror="$work/${repo_name}.git"
+          mkdir -p "$work" "$out/metadata"
+          gh repo clone "$GITHUB_REPOSITORY" "$mirror" -- --mirror
+          git -C "$mirror" remote set-url origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          git -C "$mirror" fsck --full
+          git -C "$mirror" bundle create "$out/${repo_name}-full.bundle" --all
+          git -C "$mirror" bundle verify "$out/${repo_name}-full.bundle"
+          git -C "$mirror" show-ref | LC_ALL=C sort > "$out/refs.txt"
+          git -C "$mirror" rev-list --all --objects | LC_ALL=C sort > "$out/objects.txt"
+          git -C "$mirror" rev-parse refs/heads/main > "$out/MAIN_COMMIT.txt"
+          git -C "$mirror" count-objects -v > "$out/repository-stats.txt"
+          git -C "$mirror" archive --format=tar --prefix="${repo_name}-main/" refs/heads/main | gzip -n -9 > "$out/${repo_name}-main-source.tar.gz"
+          tar -tzf "$out/${repo_name}-main-source.tar.gz" | LC_ALL=C sort > "$out/source-files.txt"
+          tar -C "$work" -czf "$out/${repo_name}-mirror.git.tar.gz" "${repo_name}.git"
+          gh api "repos/$GITHUB_REPOSITORY" > "$out/metadata/repository.json"
+          gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/branches?per_page=100" | jq 'add' > "$out/metadata/branches.json"
+          gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/tags?per_page=100" | jq 'add' > "$out/metadata/tags.json"
+          gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/releases?per_page=100" | jq 'add' > "$out/metadata/releases.json"
+          gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/pulls?state=all&per_page=100" | jq 'add' > "$out/metadata/pulls.json"
+          gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/issues?state=all&per_page=100" | jq 'add' > "$out/metadata/issues.json"
+          if ! gh api "repos/$GITHUB_REPOSITORY/pages" > "$out/metadata/pages.json" 2> "$out/metadata/pages-error.txt"; then :; fi
+          {
+            echo "repository=$GITHUB_REPOSITORY"
+            echo "exported_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "main_commit=$(cat "$out/MAIN_COMMIT.txt")"
+            echo "bundle_restore=git clone ${repo_name}-full.bundle ${repo_name}"
+            echo "mirror_restore=tar -xzf ${repo_name}-mirror.git.tar.gz"
+            echo "source_extract=tar -xzf ${repo_name}-main-source.tar.gz"
+            echo "verify=sha256sum -c SHA256SUMS.txt"
+            echo "not_in_git_export=release asset bytes, Actions artifacts/logs, secrets, environment protection rules, issue/PR comments and reviews"
+          } > "$out/RESTORE.txt"
+          (cd "$out" && find . -type f ! -name SHA256SUMS.txt -print0 | LC_ALL=C sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+          (cd "$out" && sha256sum -c SHA256SUMS.txt)
+          verify="$RUNNER_TEMP/git-export-verify"
+          git clone "$out/${repo_name}-full.bundle" "$verify"
+          git -C "$verify" fsck --full
+          test "$(git -C "$verify" rev-parse HEAD)" = "$(cat "$out/MAIN_COMMIT.txt")"
+      - name: Upload complete repository export
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: ${{ github.event.repository.name }}-complete-git-export-${{ github.sha }}
+          path: ${{ runner.temp }}/git-export/
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0

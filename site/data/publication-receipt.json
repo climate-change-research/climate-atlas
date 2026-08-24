@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "publication_id": "climate-atlas-greenery-stage1-2026-08-24-v1",
+  "publication_date": "2026-08-24",
+  "research_repository": "climate-change-research/Research",
+  "research_commit": "a364c940496bca278a6518a66e15f4c9bdd5ff77",
+  "research_snapshot": "global-greenery-stage1-2026-08-22-v1",
+  "development_repository": "climate-change-research/Climate-Atlas-Development",
+  "public_repository": "climate-change-research/climate-atlas",
+  "manifest_project_id": "WEB-GREENERY-001",
+  "manifest_snapshot_as_of": "2026-08-22",
+  "runtime_depends_on_external_scientific_services": false,
+  "rights_review": {
+    "complete_original_glwd_public": false,
+    "transformed_glwd_display_public": true,
+    "seagrassspotter_license": "CC-BY-4.0",
+    "seagrassspotter_rights_reverified": "2026-08-24",
+    "project_authored_material": "All rights reserved"
+  },
+  "artifacts_public": {
+    "path": "data/artifacts-public.json",
+    "size_bytes": 2266,
+    "sha256": "031f16880d498c1819c4457cc989c4f2cb16c8eb15f3f301d66abc0e32ae94eb"
+  },
+  "runtime_aggregate_sha256": "359c11b72004de0a8df76b91ca7eb8dd322bef72ce9297460acea806bc538b25"
+}
