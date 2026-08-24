@@ -17,14 +17,14 @@
       "sha256": "07a2862e55714e94dded1f44bbc68c1410b094797f386f2e78c3d3691bd84469"
     },
     {
-      "path": "assets/index-CutKhwpB.css",
-      "size_bytes": 94746,
-      "sha256": "12ad41df7f0e0bfe31617a786801781ac55fdd86cdd0abc3ac65b5b21e27e570"
+      "path": "assets/index-CoMX3ciN.css",
+      "size_bytes": 94795,
+      "sha256": "a283a28cdc535991825739063b46dbf52ffa980d4eff94a2265192b0c120c7a0"
     },
     {
-      "path": "assets/index-DQIM7CBN.js",
-      "size_bytes": 967969,
-      "sha256": "c9b89e40d57bff0740d209ac9bf693f3159f0cf6efef8dddce1a1addedf3adc4"
+      "path": "assets/index-mlGgYsib.js",
+      "size_bytes": 969300,
+      "sha256": "e2a8e622c6888c9b10062bd94fbf1d23df235df15b1f223111f165c8c4099319"
     },
     {
       "path": "data/artifacts-public.json",
@@ -98,8 +98,8 @@
     },
     {
       "path": "index.html",
-      "size_bytes": 741,
-      "sha256": "faaff2740d6eef5ffa689910881c849c395978877efa8897804265ccc8edaf36"
+      "size_bytes": 737,
+      "sha256": "20e4dcfd328ce1364228a048b9bde062dd97e3d916b269ff9443a21e5238d81d"
     },
     {
       "path": "licenses/maplibre-gl-LICENSE.txt",

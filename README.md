@@ -33,6 +33,9 @@ See [PUBLICATION.json](PUBLICATION.json),
 ## Rehosting and recovery
 
 The browser needs no paid API, secret key, or live scientific-data service.
+The interactive map requires WebGL2. Browsers or devices that do not make
+WebGL2 available receive a clear compatibility requirement with browser,
+hardware-acceleration, and alternate-device guidance.
 After verifying `SHA256SUMS.txt`, serve the contents of `site/` from any static
 host with `site/index.html` as the entry point. Detailed migration instructions
 are in [MIGRATION.md](MIGRATION.md).
@@ -47,4 +50,3 @@ visibility and GitHub's interface do not make the project open source or open
 content. Third-party scientific data and software retain their own licenses
 and attribution requirements; see
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-
