@@ -5,7 +5,7 @@
   "research_commit": "a364c940496bca278a6518a66e15f4c9bdd5ff77",
   "research_snapshot": "global-greenery-stage1-2026-08-22-v1",
   "development_repository": "climate-change-research/Climate-Atlas-Development",
-  "development_commit": "01d490c6c4ee955c653e42ff00085417b4d6cce0",
+  "development_commit": "e66ca671c446ef1c2b1f353c7475f0a9db06cff3",
   "public_repository": "climate-change-research/climate-atlas",
   "runtime_requires_credentials": false,
   "runtime_requires_scientific_publishers": false
