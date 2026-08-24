@@ -1,0 +1,6 @@
+Climate Atlas public repository export checkpoint trigger
+requested_at_utc=2026-08-24T22:30:00Z
+release=webgl2-requirement-v1
+base_public_commit=ce043467e9e58d756e52532c6bf717e654940df1
+development_commit=e66ca671c446ef1c2b1f353c7475f0a9db06cff3
+purpose=Run the checksum-verified full Git bundle, mirror, and exact-main source export workflow for the deployed WebGL2 compatibility release.
