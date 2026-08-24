@@ -1,0 +1,22 @@
+desktop response 200: http://127.0.0.1:4173/data/source-manifest.json
+desktop response 200: http://127.0.0.1:4173/data/reference/natural-earth-land.geojson
+desktop response 200: http://127.0.0.1:4173/data/images/chlorophyll-proxy.png
+desktop response 200: http://127.0.0.1:4173/data/images/natural-types.png
+desktop response 200: http://127.0.0.1:4173/data/images/ndvi.png
+desktop response 200: http://127.0.0.1:4173/data/images/agriculture.png
+desktop response 200: http://127.0.0.1:4173/data/images/wetlands.png
+desktop response 200: http://127.0.0.1:4173/data/images/mangroves.png
+desktop response 200: http://127.0.0.1:4173/data/images/wetland-context.png
+desktop console warning: [.WebGL-0x3d2c00167e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+desktop console warning: [.WebGL-0x3d2c00167e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+desktop console warning: [.WebGL-0x3d2c00167e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+desktop console warning: [.WebGL-0x3d2c00167e00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+mobile response 200: http://127.0.0.1:4173/data/source-manifest.json
+mobile response 200: http://127.0.0.1:4173/data/reference/natural-earth-land.geojson
+mobile response 200: http://127.0.0.1:4173/data/images/chlorophyll-proxy.png
+mobile response 200: http://127.0.0.1:4173/data/images/ndvi.png
+mobile response 200: http://127.0.0.1:4173/data/images/natural-types.png
+mobile response 200: http://127.0.0.1:4173/data/images/agriculture.png
+mobile response 200: http://127.0.0.1:4173/data/images/wetlands.png
+mobile response 200: http://127.0.0.1:4173/data/images/wetland-context.png
+mobile response 200: http://127.0.0.1:4173/data/images/mangroves.png
