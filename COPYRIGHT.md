@@ -14,6 +14,6 @@ open-source or open-content grant.
 Third-party software, scientific data, factual records, and cited materials
 remain subject to their own licenses, policies, attribution requirements, and
 legal exceptions. Those materials are identified in `THIRD_PARTY_NOTICES.md`,
-the public source manifest, and `public/licenses/`.
+the public source manifest, and `site/licenses/`.
 
 No statement in this file claims ownership of third-party material or facts.

@@ -164,12 +164,12 @@ https://github.com/maplibre/maplibre-gl-js/blob/v6.5.0/LICENSE.txt
 
 Development and build dependencies include Vite, Vitest, TypeScript, and
 GeoJSON type definitions. Their versions are pinned in
-[package.json](package.json), and each package retains its own license. The
+the private Development repository's package manifest, and each package retains its own license. The
 scientific processing environment remains in the private Research repository.
 
 The generated production dependency inventory is shipped under
-`public/licenses/npm-production-licenses.json`, and the complete MapLibre
-license text is shipped under `public/licenses/maplibre-gl-LICENSE.txt`.
+`licenses/npm-production-licenses.json`, and the complete MapLibre
+license text is shipped under `licenses/maplibre-gl-LICENSE.txt`.
 
 ## Deliberately unbundled candidates
 
@@ -187,4 +187,4 @@ Stage 1 does not redistribute:
   Earth Engine or substantially larger build-time ingestion decision.
 
 The reasons and authoritative links are preserved in the
-[source manifest](public/data/source-manifest.json).
+[source manifest](data/source-manifest.json).

@@ -4,8 +4,8 @@ These screenshots were captured by the passing Development quality workflow
 for reviewed development commit
 `8027301067ec096f1f2757d216e2c1cb24a9f455`. The browser-facing `site/` bytes
 are identical to the publication projected from development main commit
-`605f6d5787bacc35f2a33a2bd08fe4cd44ff45ba`; only the root publication receipt
-was rebound to the merge commit.
+`01d490c6c4ee955c653e42ff00085417b4d6cce0`; the later development change only
+corrected context-relative links in the copyright and third-party notices.
 
 - `desktop.jpg`: 1440 × 1000 desktop viewport
 - `mobile.jpg`: 390 × 844 mobile viewport
