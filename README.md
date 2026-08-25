@@ -9,6 +9,14 @@ reference snapshot. It is not a live or perfectly synchronized image. Every
 layer keeps its actual observation window, evidence category, coverage,
 resolution, source, rights, and limitations.
 
+Stage 2A makes those limits visible at the point of use. It labels evidence and
+observation windows on every layer, explains explicit no-data meaning, warns
+when bounded periods are not contemporaneous, distinguishes raster overzoom
+from point evidence, and reports high-latitude Web Mercator distortion. Layer
+details expose supports/does-not-support statements, method, version, citation,
+rights, processing records, and exact public-artifact checksums. The approved
+scientific snapshot and its aggregate checksum are unchanged.
+
 Expected GitHub Pages URL:
 https://climate-change-research.github.io/climate-atlas/
 
