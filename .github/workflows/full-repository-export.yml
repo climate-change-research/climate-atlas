@@ -2,13 +2,9 @@ name: Full repository mirror export
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-  pull_request:
-    paths:
-      - .github/backup-export-trigger.txt
-      - .github/workflows/full-repository-export.yml
 
+# Complete Git exports are deliberate one-day transfer objects.
+# Private Google Drive is the durable preservation and restoration source.
 permissions:
   contents: read
   actions: read
@@ -72,5 +68,5 @@ jobs:
           name: ${{ github.event.repository.name }}-complete-git-export-${{ github.sha }}
           path: ${{ runner.temp }}/git-export/
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 1
           compression-level: 0
